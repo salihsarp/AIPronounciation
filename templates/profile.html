@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>User Profile</title>
+<style>
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: #eef2f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 24px rgba(0,0,0,.06);
+    width: min(100%, 480px);
+  }
+  h1 {
+    margin-top: 0;
+    text-align: center;
+  }
+  .word-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+  .word-table th,
+  .word-table td {
+    text-align: left;
+    padding: .4rem .5rem;
+  }
+  .word-table tbody tr:nth-child(odd) {
+    background: #f1f5f9;
+  }
+  .back { margin-top: 1rem; text-align: center; }
+
+  /* BUTTONS */
+  .btn {
+    display:inline-block;
+    font-size:1rem;
+    font-weight:600;
+    padding:.9rem 2rem;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:transform .15s ease, background .15s ease;
+    margin:.5rem .25rem;
+    text-decoration:none;
+  }
+  .btn-secondary {
+    background:#e2e8f0;
+    color:#1e293b;
+  }
+  .btn:hover { transform:translateY(-2px); }
+  .btn-secondary:hover { background:#cbd5e1; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Most Struggled Words</h1>
+    <table class="word-table">
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for word, count in words %}
+        <tr>
+          <td>{{ word }}</td>
+          <td>{{ count }}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="2">No data yet.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="back"><a href="/" class="btn btn-secondary">Back to Practice</a></div>
+  </div>
+</body>
+</html>
